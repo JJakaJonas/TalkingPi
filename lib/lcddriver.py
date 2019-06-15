@@ -1,3 +1,6 @@
+#Credits goes to CaptainStouf
+#https://github.com/CaptainStouf
+
 import sys
 sys.path.append("./lib")
 
