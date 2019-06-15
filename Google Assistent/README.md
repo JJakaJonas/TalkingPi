@@ -35,3 +35,6 @@ Go to https://console.cloud.google.com/
 Go to the page there will be linked till
 <br> and authenticate the access to use the account
 
+Start assistent
+    cd ~/AIY-projects-python/src/examples/voice
+    ./assistant_library_demo.py
