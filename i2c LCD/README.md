@@ -11,7 +11,7 @@
 
 ## Activate I2C
     sudo raspi-config
-<br> Choose option 9 **Advanced Options**
+<br> Choose option 5 **Advanced Options**
 <br> Choose option A6 **I2C**
 <br> Activate and exit
 
@@ -41,3 +41,25 @@
 
 ## Test the script
     sudo python LCD.py
+    
+    sudo nano /lib/systemd/system/LCD.service
+    
+Inset the following text:
+ [Unit]
+ Description=My LCD Service
+ After=multi-user.target
+
+ [Service]
+ Type=idle
+ ExecStart=/usr/bin/python /home/pi/LCD.py
+
+ [Install]
+ WantedBy=multi-user.target
+ 
+ 
+    ExecStart=/usr/bin/python /home/pi/LCD.py > /home/pi/LCD.log 2>&1
+    sudo chmod 644 /lib/systemd/system/LCD.service
+    sudo systemctl daemon-reload
+    sudo systemctl enable LCD.service
+    sudo reboot
+
