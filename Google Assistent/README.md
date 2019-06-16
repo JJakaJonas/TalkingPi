@@ -36,6 +36,41 @@ Go to the page there will be linked till
 <br> and authenticate the access to use the account
 
 ## Start assistent at boot
-Type in 
+Create the service file. Type:
+    sudo nano /etc/systemd/system/assist.service
+
+Copy and paste following text in the assist.service file.
+
+    [Unit]
+    Description=Assist @ reboot
+    
+    [Service]
+    Environment=XDG_RUNTIME_DIR=/run/user/1000
+    ExecStart=/home/pi/AIY-projects-python/src/examples/voice/main.py
+    Restart=always
+    User=pi
+    StandardOutput=syslog
+    StandardError=syslog
+    SyslogIdentifier=assist
+    
+    [Install]
+    WantedBy=multi-user.target
+
+Save and exit.
+
+<br> Next, copy your assistant demo to pi folder
+
     cd ~/AIY-projects-python/src/examples/voice
-    ./assistant_library_demo.py
+    cp assistant_library_demo.py main.py
+
+Enable the service:
+
+    sudo systemctl enable assist.service
+
+Start the service:
+
+    sudo systemctl start assist.service
+
+Reboot your Raspberry Pi
+
+    sudo reboot
