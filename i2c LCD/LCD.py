@@ -14,4 +14,4 @@ lcd.lcd_clear()
 while True:
 lcd.lcd_display_string("Time: %s" %time.strftime("%H:%M:%S"), 1)
 
-lcd.lcd_display_string("Time: %s" %time.strftime("%d:%m:%Y"), 2)
+lcd.lcd_display_string("Date: %s" %time.strftime("%d:%m:%Y"), 2)
