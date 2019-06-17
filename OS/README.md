@@ -27,12 +27,12 @@ To make the entry to cron, we will need to add the following to the crontab file
     crontab -e
 
 The cron job will look similar to what is below. This depends on if you
-want a log file created after each run (remove '>/home/pi/logs/cronlog')This will run once a week on Saturday at midnight. To create the cronlog file, just enter the following (you may need to use sudo):
+want a log file created after each run (remove '>/home/pi/logs/cronlog')This will run once a week on Monday at midnight. To create the cronlog file, just enter the following (you may need to use sudo):
 
     touch /logs/cronlog
 
 Add the following line at the bottom and save (ctrl X, Y and enter):
 
-    0 0 * * 0 sh /home/pi/update.sh 2>/home/pi/logs/cronlog
+    0 0 * * 1 sh /home/pi/update.sh 2>/home/pi/logs/cronlog
 
 The 2> redirects all output to the file so that you will have a complete log.
